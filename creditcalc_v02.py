@@ -30,7 +30,16 @@ parser.add_argument("-i", "--interest", type=float,
 
 args = parser.parse_args()
 
-if args.type is None or args.type not in ["annuity", "diff"]:
+check = [args.type, args.principal, args.payment, args.periods, args.interest]
+counter = 0
+
+for i in check:
+    if i is None:
+        counter += 1
+
+if counter == 5:
+    pass
+elif args.type is None or args.type not in ["annuity", "diff"]:
     print("Incorrect parameters")
 elif args.type == "diff" and args.payment:
     print("Incorrect parameters")
